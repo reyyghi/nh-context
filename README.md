@@ -30,7 +30,7 @@ RegisterCommand("test", function(source, args, raw)
 end)
 
 RegisterNetEvent('nh-context:testMenu', function()
-    TriggerEvent('nh-context:sendMenu', {
+    exports['nh-context']:Open({
         {
             id = 1,
             header = "Main Title",
@@ -54,7 +54,7 @@ end)
 RegisterNetEvent('nh-context:testMenu2', function(data)
     local id = data.id
     local number = data.number
-    TriggerEvent('nh-context:sendMenu', {
+    local menu = {
         {
             id = 1,
             header = "< Go Back",
@@ -68,7 +68,8 @@ RegisterNetEvent('nh-context:testMenu2', function(data)
             header = "Number: "..number,
             txt = "ID: "..id
         },
-    })
+    }
+    exports['nh-context']:Open(menu)
 end)
 ```
 
